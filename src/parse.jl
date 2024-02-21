@@ -65,21 +65,21 @@ function tryparsenext_tz(str, i, len, min_width::Int=1, max_width::Int=0)
     end
 end
 
-function Dates.tryparsenext(d::DatePart{'z'}, str, i, len)
-    tryparsenext_fixedtz(str, i, len, min_width(d), max_width(d))
-end
+# function Dates.tryparsenext(d::DatePart{'z'}, str, i, len)
+#     tryparsenext_fixedtz(str, i, len, min_width(d), max_width(d))
+# end
 
-function Dates.tryparsenext(d::DatePart{'Z'}, str, i, len)
-    tryparsenext_tz(str, i, len, min_width(d), max_width(d))
-end
+# function Dates.tryparsenext(d::DatePart{'Z'}, str, i, len)
+#     tryparsenext_tz(str, i, len, min_width(d), max_width(d))
+# end
 
-function Dates.format(io::IO, d::DatePart{'z'}, zdt, locale)
-    write(io, string(zdt.zone.offset))
-end
+# function Dates.format(io::IO, d::DatePart{'z'}, zdt, locale)
+#     write(io, string(zdt.zone.offset))
+# end
 
-function Dates.format(io::IO, d::DatePart{'Z'}, zdt, locale)
-    write(io, string(zdt.zone))  # In most cases will be an abbreviation.
-end
+# function Dates.format(io::IO, d::DatePart{'Z'}, zdt, locale)
+#     write(io, string(zdt.zone))  # In most cases will be an abbreviation.
+# end
 
 # Note: ISOZonedDateTimeFormat is defined in the module __init__ which means that this
 # function can not be called from within this module. TODO: Ignore linting for this line

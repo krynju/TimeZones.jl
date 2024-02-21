@@ -120,10 +120,10 @@ Dates.Time(zdt::ZonedDateTime, ::Type{UTC}) = Time(DateTime(zdt, UTC))
 
 Returns a `ZonedDateTime` corresponding to the user's system time in the specified `TimeZone`.
 """
-function Dates.now(tz::TimeZone)
-    utc = unix2datetime(time())
-    ZonedDateTime(utc, tz, from_utc=true)
-end
+# function Dates.now(tz::TimeZone)
+#     utc = unix2datetime(time())
+#     ZonedDateTime(utc, tz, from_utc=true)
+# end
 
 """
     today(tz::TimeZone) -> Date
@@ -143,7 +143,7 @@ julia> today(tz"Pacific/Midway"), today(tz"Pacific/Apia")
 (2017-11-09, 2017-11-10)
 ```
 """
-Dates.today(tz::TimeZone) = Date(now(tz))
+# Dates.today(tz::TimeZone) = Date(now(tz))
 
 """
     todayat(tod::Time, tz::TimeZone, [amb]) -> ZonedDateTime
