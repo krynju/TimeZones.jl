@@ -120,7 +120,7 @@ end
 
 
 Base.show(io::IO, ::MIME"text/plain", t::Transition) = print(io, t)
-Base.show(io::IO, ::MIME"text/plain", tz::TimeZone) = print(IOContext(io, :compact => false), tz)
+# Base.show(io::IO, ::MIME"text/plain", tz::TimeZone) = print(IOContext(io, :compact => false), tz)
 Base.show(io::IO, ::MIME"text/plain", zdt::ZonedDateTime) = print(io, zdt)
 
 # https://github.com/JuliaLang/julia/pull/33290
