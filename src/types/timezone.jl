@@ -50,7 +50,7 @@ julia> TimeZone("UTC")
 UTC
 ```
 """
-TimeZone(::AbstractString)
+# TimeZone(::AbstractString)
 
 """
     TimeZone(str::AbstractString, mask::Class) -> TimeZone
@@ -68,26 +68,26 @@ julia> TimeZone("US/Pacific", TimeZones.Class(:LEGACY))
 US/Pacific (UTC-8/UTC-7)
 ```
 """
-TimeZone(::AbstractString, ::Class)
+# TimeZone(::AbstractString, ::Class)
 
-function TimeZone(str::AbstractString, mask::Class=Class(:DEFAULT))
-    tz, class = get(_TZ_CACHE, str) do
-        if occursin(FIXED_TIME_ZONE_REGEX, str)
-            FixedTimeZone(str), Class(:FIXED)
-        else
-            throw(ArgumentError("Unknown time zone \"$str\""))
-        end
-    end
+# function TimeZone(str::AbstractString, mask::Class=Class(:DEFAULT))
+#     tz, class = get(_TZ_CACHE, str) do
+#         if occursin(FIXED_TIME_ZONE_REGEX, str)
+#             FixedTimeZone(str), Class(:FIXED)
+#         else
+#             throw(ArgumentError("Unknown time zone \"$str\""))
+#         end
+#     end
 
-    if mask & class == Class(:NONE)
-        throw(ArgumentError(
-            "The time zone \"$str\" is of class `$(repr(class))` which is " *
-            "currently not allowed by the mask: `$(repr(mask))`"
-        ))
-    end
+#     if mask & class == Class(:NONE)
+#         throw(ArgumentError(
+#             "The time zone \"$str\" is of class `$(repr(class))` which is " *
+#             "currently not allowed by the mask: `$(repr(mask))`"
+#         ))
+#     end
 
-    return tz
-end
+#     return tz
+# end
 
 """
     @tz_str -> TimeZone
@@ -100,9 +100,9 @@ julia> tz"Africa/Nairobi"
 Africa/Nairobi (UTC+3)
 ```
 """
-macro tz_str(str)
-    TimeZone(str)
-end
+# macro tz_str(str)
+#     TimeZone(str)
+# end
 
 """
     istimezone(str::AbstractString, mask::Class=Class(:DEFAULT)) -> Bool
